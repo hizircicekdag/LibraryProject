@@ -28,7 +28,7 @@ export default function App() {
           options={{ headerShown: false }} 
         />
         <Stack.Screen 
-          name="Ana Sayfa" 
+          name="Main" 
           component={MainPage} 
           options={{ headerShown: false }} 
         />
