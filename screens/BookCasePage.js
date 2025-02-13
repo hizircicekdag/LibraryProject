@@ -8,7 +8,10 @@ import {
   TextInput, 
   Alert,
   ActivityIndicator,
-  FlatList 
+  FlatList,
+  SafeAreaView,
+  Platform,
+  StatusBar
 } from 'react-native';
 import { auth } from '../config/firebaseConfig';
 import { getFirestore, collection, addDoc, query, where, getDocs, onSnapshot } from 'firebase/firestore';
@@ -101,16 +104,25 @@ export default function BookCasePage({ navigation }) {
     </TouchableOpacity>
   );
 
+  const renderEmptyList = () => (
+    <View style={styles.emptyStateContainer}>
+      <Text style={styles.emptyStateText}>Henüz kitaplık eklenmemiş</Text>
+      <Text style={styles.emptyStateSubText}>Kitaplık eklemek için sağ alttaki + butonunu kullanabilirsiniz</Text>
+    </View>
+  );
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Kitaplığım</Text>
-      
+    <SafeAreaView style={styles.container}>
       {bookCases.length > 0 ? (
         <FlatList
           data={bookCases}
           renderItem={renderBookCase}
-          keyExtractor={item => item.id}
-          style={styles.bookCaseList}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{
+            padding: 15,
+            paddingTop: 20,
+          }}
+          ListEmptyComponent={renderEmptyList}
         />
       ) : (
         <View style={styles.emptyStateContainer}>
@@ -171,21 +183,15 @@ export default function BookCasePage({ navigation }) {
           </View>
         </View>
       </Modal>
-    </View>
+    </SafeAreaView>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   },
   emptyStateContainer: {
     flex: 1,
@@ -293,6 +299,8 @@ const styles = StyleSheet.create({
   },
   bookCaseList: {
     flex: 1,
+    paddingHorizontal: 15,
+    marginTop: 20,
   },
   fab: {
     position: 'absolute',
