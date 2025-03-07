@@ -1,5 +1,5 @@
 {
-  "name": "newkutuphane",
+  "name": "kutuphanem",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -9,13 +9,32 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "expo": "~52.0.35",
-    "expo-status-bar": "~2.0.1",
-    "react": "18.3.1",
-    "react-native": "0.76.7"
+    "@babel/core": "^7.26.9",
+    "@babel/helpers": "^7.26.9",
+    "@babel/plugin-transform-runtime": "^7.26.9",
+    "@babel/runtime": "^7.26.9",
+    "@expo/metro-runtime": "^4.0.1",
+    "@react-native-async-storage/async-storage": "^1.24.0",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/native-stack": "^6.9.17",
+    "babel-jest": "^29.7.0",
+    "babel-preset-expo": "^9.5.0",
+    "date-fns": "^4.1.0",
+    "expo": "^49.0.0",
+    "expo-status-bar": "~1.6.0",
+    "firebase": "^11.3.1",
+    "jest": "^29.7.0",
+    "numpy": "^0.0.1",
+    "react": "18.2.0",
+    "react-native": "0.72.10",
+    "react-native-calendars": "^1.1309.0",
+    "react-native-safe-area-context": "4.6.3",
+    "react-native-screens": "~3.22.0",
+    "react-native-vector-icons": "^10.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/preset-env": "^7.26.9",
+    "@react-native-community/cli": "^15.1.3"
   },
   "private": true
 }
